@@ -2,11 +2,12 @@ import { createConfig } from "@ponder/core";
 import { http } from "viem";
 import { SecureVaultExtendedLendingAbi } from "./abis/SecureVaultExtendedLendingAbi";
 
+if (process.env.DATABASE_URL && !process.env.NODE_TLS_REJECT_UNAUTHORIZED) {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+}
+
 const avalancheRpc = process.env.PONDER_RPC_URL_43114 ?? "https://avalanche-mainnet.infura.io/v3/ee9ace694999466db35636ceac1d39eb";
-const rawDatabaseUrl = process.env.DATABASE_URL;
-const databaseUrl = rawDatabaseUrl
-  ? (rawDatabaseUrl.includes("sslmode=") ? rawDatabaseUrl : `${rawDatabaseUrl}?sslmode=no-verify`)
-  : undefined;
+const databaseUrl = process.env.DATABASE_URL;
 const maxRequestsPerSecond = Number(process.env.MAX_RPC_REQUESTS_PER_SECOND ?? "50");
 const pollingInterval = Number(process.env.POLLING_INTERVAL_MS ?? "4000");
 
