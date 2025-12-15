@@ -14,6 +14,9 @@ export default createConfig({
         connectionString: databaseUrl,
         poolConfig: {
           max: 30,
+          ssl: {
+            rejectUnauthorized: false,
+          },
         },
       }
     : {
