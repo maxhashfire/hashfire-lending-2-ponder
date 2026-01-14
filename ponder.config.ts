@@ -8,6 +8,7 @@ if (process.env.DATABASE_URL && !process.env.NODE_TLS_REJECT_UNAUTHORIZED) {
 
 const avalancheRpc = process.env.PONDER_RPC_URL_43114 ?? "https://avalanche-mainnet.infura.io/v3/ee9ace694999466db35636ceac1d39eb";
 const databaseUrl = process.env.DATABASE_URL;
+const databaseSchema = process.env.DATABASE_SCHEMA ?? "public";
 const maxRequestsPerSecond = Number(process.env.MAX_RPC_REQUESTS_PER_SECOND ?? "50");
 const pollingInterval = Number(process.env.POLLING_INTERVAL_MS ?? "4000");
 
@@ -16,6 +17,7 @@ export default createConfig({
     ? {
         kind: "postgres",
         connectionString: databaseUrl,
+        schema: databaseSchema,
         poolConfig: {
           max: 30,
         },
