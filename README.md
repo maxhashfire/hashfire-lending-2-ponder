@@ -23,7 +23,7 @@ GraphQL endpoint: `http://localhost:42069/graphql`
 
 - **App Name:** `hashfire-lending-two`
 - **Region:** NYC1
-- **URL:** `https://hashfire-lending-two-XXXXX.ondigitalocean.app` (update after deploy)
+- **URL:** `https://hashfire-lending-two-58edl.ondigitalocean.app`
 
 ### Database
 
